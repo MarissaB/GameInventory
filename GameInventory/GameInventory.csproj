@@ -63,10 +63,35 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddGame.xaml.cs">
+      <DependentUpon>AddGame.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Game.cs">
+      <DependentUpon>GamingInventory.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GamingInventory.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GamingInventory.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GamingInventory.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GamingInventory.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GamingInventory.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GamingInventory.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\ItemRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
+    <Page Include="AddGame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -74,24 +99,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Game.cs">
-      <DependentUpon>Inventory.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Inventory.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Inventory.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Inventory.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Inventory.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Inventory.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Inventory.edmx</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -116,22 +123,22 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Inventory.edmx">
+    <EntityDeploy Include="GamingInventory.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Inventory.Designer.cs</LastGenOutput>
+      <LastGenOutput>GamingInventory.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Inventory.Context.tt">
+    <None Include="GamingInventory.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Inventory.edmx</DependentUpon>
-      <LastGenOutput>Inventory.Context.cs</LastGenOutput>
+      <DependentUpon>GamingInventory.edmx</DependentUpon>
+      <LastGenOutput>GamingInventory.Context.cs</LastGenOutput>
     </None>
-    <None Include="Inventory.edmx.diagram">
-      <DependentUpon>Inventory.edmx</DependentUpon>
+    <None Include="GamingInventory.edmx.diagram">
+      <DependentUpon>GamingInventory.edmx</DependentUpon>
     </None>
-    <None Include="Inventory.tt">
+    <None Include="GamingInventory.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Inventory.edmx</DependentUpon>
-      <LastGenOutput>Inventory.cs</LastGenOutput>
+      <DependentUpon>GamingInventory.edmx</DependentUpon>
+      <LastGenOutput>GamingInventory.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System;
 
 namespace GameInventory
 {
@@ -18,17 +19,7 @@ namespace GameInventory
 
         private void FillDataGrid()
         {
-            string connectionstring = ConfigurationManager.ConnectionStrings["Local"].ConnectionString;
-            string commandstring = string.Empty;
-            using (SqlConnection con = new SqlConnection(connectionstring))
-            {
-                commandstring = "SELECT * FROM Games";
-                SqlCommand cmd = new SqlCommand(commandstring, con);
-                SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable("Game");
-                sda.Fill(dt);
-                GameGrid.ItemsSource = dt.DefaultView;
-            }
+            GameGrid.ItemsSource = Global.Search("SELECT * FROM Games").DefaultView;
         }
 
         private void ExitClick(object sender, RoutedEventArgs e)
@@ -38,7 +29,14 @@ namespace GameInventory
 
         private void AddClick(object sender, RoutedEventArgs e)
         {
-            // Pop up with window template to add new game
+            AddGame addwindow = new AddGame();
+            addwindow.RefreshEvent += new EventHandler(addwindow_RefreshEvent);
+            addwindow.ShowDialog();
+        }
+
+        private void addwindow_RefreshEvent(object sender, EventArgs e)
+        {
+            GameGrid.ItemsSource = Global.Search("SELECT * FROM Games").DefaultView;
         }
 
         private void EditClick(object sender, RoutedEventArgs e)
@@ -53,17 +51,9 @@ namespace GameInventory
 
         private void SearchClick(object sender, RoutedEventArgs e)
         {
-            string connectionstring = ConfigurationManager.ConnectionStrings["Local"].ConnectionString;
-            string commandstring = string.Empty;
-            using (SqlConnection con = new SqlConnection(connectionstring))
-            {
-                commandstring = Global.QueryBuilder(Searchbox.Text);
-                SqlCommand cmd = new SqlCommand(commandstring, con);
-                SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable("Game");
-                sda.Fill(dt);
-                GameGrid.ItemsSource = dt.DefaultView;
-            }
+            string query = Global.QueryBuilder(Searchbox.Text);
+            DataTable results = Global.Search(query);
+            GameGrid.ItemsSource = results.DefaultView;
         }
     }
 }

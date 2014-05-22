@@ -13,14 +13,14 @@
           <Property Name="Name" Type="varchar(max)" Nullable="false" />
           <Property Name="Platform" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Language" Type="varchar" MaxLength="50" />
-          <Property Name="Owned" Type="tinyint" />
-          <Property Name="Cartridge" Type="nchar" MaxLength="10" />
-          <Property Name="Box" Type="tinyint" />
-          <Property Name="Manual" Type="tinyint" />
-          <Property Name="Guide" Type="tinyint" />
+          <Property Name="Owned" Type="bit" />
+          <Property Name="Cartridge" Type="bit" />
+          <Property Name="Box" Type="bit" />
+          <Property Name="Manual" Type="bit" />
+          <Property Name="Guide" Type="bit" />
           <Property Name="Accessory" Type="varchar(max)" />
           <Property Name="Notes" Type="varchar(max)" />
-          <Property Name="NewInBox" Type="tinyint" />
+          <Property Name="NewInBox" Type="bit" />
         </EntityType>
         <EntityContainer Name="GamingModelStoreContainer">
           <EntitySet Name="Games" EntityType="Self.Games" Schema="dbo" store:Type="Tables" />
@@ -38,14 +38,14 @@
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Platform" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Language" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Owned" Type="Byte" />
-          <Property Name="Cartridge" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Box" Type="Byte" />
-          <Property Name="Manual" Type="Byte" />
-          <Property Name="Guide" Type="Byte" />
+          <Property Name="Owned" Type="Boolean" />
+          <Property Name="Cartridge" Type="Boolean" />
+          <Property Name="Box" Type="Boolean" />
+          <Property Name="Manual" Type="Boolean" />
+          <Property Name="Guide" Type="Boolean" />
           <Property Name="Accessory" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="NewInBox" Type="Byte" />
+          <Property Name="NewInBox" Type="Boolean" />
         </EntityType>
         <EntityContainer Name="GamingEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Games" EntityType="Self.Game" />

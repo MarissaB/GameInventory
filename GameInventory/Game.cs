@@ -18,13 +18,13 @@ namespace GameInventory
         public string Name { get; set; }
         public string Platform { get; set; }
         public string Language { get; set; }
-        public Nullable<byte> Owned { get; set; }
-        public string Cartridge { get; set; }
-        public Nullable<byte> Box { get; set; }
-        public Nullable<byte> Manual { get; set; }
-        public Nullable<byte> Guide { get; set; }
+        public Nullable<bool> Owned { get; set; }
+        public Nullable<bool> Cartridge { get; set; }
+        public Nullable<bool> Box { get; set; }
+        public Nullable<bool> Manual { get; set; }
+        public Nullable<bool> Guide { get; set; }
         public string Accessory { get; set; }
         public string Notes { get; set; }
-        public Nullable<byte> NewInBox { get; set; }
+        public Nullable<bool> NewInBox { get; set; }
     }
 }
