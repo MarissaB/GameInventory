@@ -1,0 +1,25 @@
+﻿<Window x:Class="GameInventory.EditGame"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Edit Game" Height="300" Width="300" ResizeMode="NoResize" BorderThickness="0" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="150,238,0,0" VerticalAlignment="Top" Width="75" Click="CancelClick"/>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="60,238,0,0" VerticalAlignment="Top" Width="75" Click="SaveClick"/>
+
+        <TextBox Name ="NameBox" Height="23" Margin="10,10,10,0" TextWrapping="Wrap" Text="Name..." VerticalAlignment="Top" GotFocus="TextBox_GotFocus"/>
+        <ComboBox Name="Platforms" Margin="10,43,10,0" VerticalAlignment="Top" Text="Select Platform" IsEditable="True" IsReadOnly="True" Focusable="True"/>
+        <ComboBox Name="Languages" Margin="10,70,10,0" VerticalAlignment="Top" Text="Select Language" IsEditable="True" IsReadOnly="True"/>
+
+        <CheckBox Name="Owned" Content="Owned" HorizontalAlignment="Left" Margin="15,101,0,0" VerticalAlignment="Top"/>
+        <CheckBox Name="Cartridge" Content="Cartridge" HorizontalAlignment="Left" Margin="15,122,0,0" VerticalAlignment="Top"/>
+        <CheckBox Name="Box" Content="Box" HorizontalAlignment="Left" Margin="15,143,0,0" VerticalAlignment="Top"/>
+        <CheckBox Name="Manual" Content="Manual" HorizontalAlignment="Left" Margin="15,164,0,0" VerticalAlignment="Top"/>
+        <CheckBox Name="Guide" Content="Guide" HorizontalAlignment="Left" Margin="15,185,0,0" VerticalAlignment="Top"/>
+        <CheckBox Name="NewInBox" Content="New In Box?" HorizontalAlignment="Left" Margin="15,206,0,0" VerticalAlignment="Top"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="128" Margin="10,97,0,0" VerticalAlignment="Top" Width="90"/>
+
+        <TextBox Name="Accessory" Height="23" Margin="105,98,10,0" TextWrapping="Wrap" Text="Accessories..." VerticalAlignment="Top" GotFocus="TextBox_GotFocus"/>
+        <TextBox Name="Notes" Height="98" Margin="105,127,10,0" TextWrapping="Wrap" Text="Notes..." VerticalAlignment="Top" GotFocus="TextBox_GotFocus"/>
+
+    </Grid>
+</Window>

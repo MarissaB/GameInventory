@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameInventory
 {
@@ -23,6 +20,9 @@ namespace GameInventory
         public static List<string> Languages = new List<string>(new string[] 
         {   "English", 
             "Japanese" });
+
+        public static Game SelectedGame = new Game();
+
 
         public static string QueryBuilder(string search)
         {
@@ -65,6 +65,23 @@ namespace GameInventory
             GamingEntities context = new GamingEntities();
             context.Games.Add(tetris);
             context.SaveChanges();
+        }
+
+        public static void DeleteGame(int id)
+       {
+           GameRepository gr = new GameRepository();
+           Game frogger = gr.GetById(id);
+           gr.Delete(frogger);
+           gr.SaveChanges();
+           Global.SelectedGame = new Game();
+       }
+
+        public static void EditGame(Game tetris)
+        {
+            GameRepository gr = new GameRepository();
+            gr.Update(tetris);
+            gr.SaveChanges();
+            Global.SelectedGame = new Game();
         }
     }
 }

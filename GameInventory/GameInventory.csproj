@@ -66,6 +66,9 @@
     <Compile Include="AddGame.xaml.cs">
       <DependentUpon>AddGame.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditGame.xaml.cs">
+      <DependentUpon>EditGame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Game.cs">
       <DependentUpon>GamingInventory.tt</DependentUpon>
     </Compile>
@@ -89,6 +92,10 @@
     <Compile Include="Repository\ItemRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Page Include="AddGame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditGame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

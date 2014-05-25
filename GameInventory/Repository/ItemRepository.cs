@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 /// <summary>
 /// Summary description for IngredientRepository
 /// </summary>
-public class IngredientRepository : Repository<Game>
+public class GameRepository : Repository<Game>
 {
 	
 }
