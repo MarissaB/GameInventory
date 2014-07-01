@@ -8,7 +8,7 @@ using System.Collections;
 namespace GameInventory
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Main inventory window for searches and choosing options.
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -67,12 +67,34 @@ namespace GameInventory
             FillDataGrid();
         }
 
+        private Boolean Confirmation()
+        {
+            bool response = false;
+            string text = "Are you sure?";
+            string caption = "Game Inventory";
+
+            MessageBoxResult result = MessageBox.Show(text, caption, MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
+            switch (result)
+            {
+                case MessageBoxResult.Yes: response = true;
+                    break;
+                case MessageBoxResult.No: response = false;
+                    break;
+                case MessageBoxResult.Cancel: response = false;
+                    break;
+            }
+            return response;
+        }
+
         private void DeleteClick(object sender, RoutedEventArgs e)
         {
             if (GameGrid.SelectedItem != null)
             {
-                Global.DeleteGame(Global.SelectedGame.GameID);
-                FillDataGrid();
+                if (Confirmation() == true)
+                {
+                    Global.DeleteGame(Global.SelectedGame.GameID);
+                    FillDataGrid();
+                }
             }
             else
             {

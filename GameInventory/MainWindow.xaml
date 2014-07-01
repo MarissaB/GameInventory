@@ -17,10 +17,31 @@
                 <ColumnDefinition Width="10*"/>
                 <ColumnDefinition Width="861*"/>
             </Grid.ColumnDefinitions>
-            <DataGrid Name="GameGrid" HorizontalAlignment="Left" Margin="0,175,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.501,0.535" UseLayoutRounding="False" MinWidth="800" MinHeight="100" Grid.Column="1"
+            <DataGrid Name="GameGrid" Margin="0,232,10,10" RenderTransformOrigin="0.501,0.535" UseLayoutRounding="False" MinWidth="800" MinHeight="100" Grid.Column="1"
                    IsReadOnly="True" SelectionChanged="GetSelectionID"/>
             <TextBox Name="Searchbox" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,10,551,0" Grid.Column="1" MaxLines="3"/>
-            <Button Name="Searchbutton" Content="Search" Grid.Column="1" HorizontalAlignment="Left" Margin="335,10,0,0" VerticalAlignment="Top" Width="75" Click="SearchClick"/>
+            <Button Name="Searchbutton" Content="Search" Grid.Column="1" HorizontalAlignment="Left" Margin="335,10,0,0" VerticalAlignment="Top" Width="75" Click="SearchClick" IsDefault="True"/>
+            <CheckBox x:Name="AdvancedSearch" Content="Advanced Search" Grid.Column="1" HorizontalAlignment="Left" Margin="432,13,0,0" VerticalAlignment="Top"/>
+            <GroupBox x:Name="Advanced" Grid.Column="1" Header="Advanced" HorizontalAlignment="Left" Margin="0,39,0,0" VerticalAlignment="Top" Height="165" Width="851" IsEnabled="{Binding ElementName=AdvancedSearch,Path=IsChecked}">
+                <Grid HorizontalAlignment="Left" Margin="10,10,-2,0" VerticalAlignment="Top" Height="125" Width="831">
+                    <ComboBox Name="Owned" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
+                        <ComboBoxItem Content="Any ownership"></ComboBoxItem>
+                        <ComboBoxItem Content="Owned"></ComboBoxItem>
+                        <ComboBoxItem Content="Not owned"></ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox Name="Cartridge" HorizontalAlignment="Left" Margin="135,10,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
+                        <ComboBoxItem Content="Any cartridge"></ComboBoxItem>
+                        <ComboBoxItem Content="Cartridge"></ComboBoxItem>
+                        <ComboBoxItem Content="No cartridge"></ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox Name="Box" HorizontalAlignment="Left" Margin="260,10,0,0" VerticalAlignment="Top" Width="120">
+                        <ComboBoxItem Content="Any box"></ComboBoxItem>
+                        <ComboBoxItem Content="Box"></ComboBoxItem>
+                        <ComboBoxItem Content="No box"></ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+
+            </GroupBox>
         </Grid>
 
     </DockPanel>
