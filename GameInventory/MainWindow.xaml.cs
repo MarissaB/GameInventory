@@ -4,6 +4,9 @@ using System.Data;
 using System.Data.SqlClient;
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Windows.Media;
+using System.Text;
 
 namespace GameInventory
 {
@@ -16,11 +19,25 @@ namespace GameInventory
         {
             InitializeComponent();
             FillDataGrid();
+            FillAdvancedDropdowns();
         }
 
         private void FillDataGrid()
         {
             GameGrid.ItemsSource = Global.Search("SELECT * FROM Games").DefaultView;
+        }
+
+        private void FillAdvancedDropdowns()
+        {
+            List<string> platforms = new List<string>();
+            platforms.Add("Any platform");
+            platforms.AddRange(Global.Platforms);
+            Platform.ItemsSource = platforms;
+
+            List<string> languages = new List<string>();
+            languages.Add("Any language");
+            languages.AddRange(Global.Languages);
+            Language.ItemsSource = languages;
         }
 
         private void ExitClick(object sender, RoutedEventArgs e)
@@ -105,6 +122,12 @@ namespace GameInventory
         private void SearchClick(object sender, RoutedEventArgs e)
         {
             string query = Global.QueryBuilder(Searchbox.Text);
+            
+            if (AdvancedSearch.IsChecked == true)
+            {
+                query = ParseAdvancedSearchOptions(query);
+            }
+
             DataTable results = Global.Search(query);
             GameGrid.ItemsSource = results.DefaultView;
         }
@@ -118,5 +141,64 @@ namespace GameInventory
                 Global.SelectedGame.GameID = Convert.ToInt32(row["GameID"]);
             }
         }
+
+        private string ParseAdvancedSearchOptions(string query)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(query);
+            if (Platform.SelectedIndex > 0)
+            {
+                string platformstatus = Global.AdvancedQueryBuilder("Platform", Platform.SelectedValue.ToString());
+                sb.Insert(sb.ToString().IndexOf("WHERE ") + 6, platformstatus + " AND ");
+            }
+
+            if (Language.SelectedIndex > 0)
+            {
+                string languagestatus = Global.AdvancedQueryBuilder("Language", Language.SelectedValue.ToString());
+                sb.Insert(sb.ToString().IndexOf("WHERE ") + 6, languagestatus + " AND ");
+            }
+
+            if (Owned.SelectedIndex > 0)
+            {
+                string ownstatus = Global.AdvancedBooleanQueryBuilder("Owned", Owned.SelectedIndex);
+                sb.Insert(sb.ToString().IndexOf("WHERE ") + 6, ownstatus + " AND ");
+            }
+
+            if (Cartridge.SelectedIndex > 0)
+            {
+                string cartridgestatus = Global.AdvancedBooleanQueryBuilder("Cartridge", Cartridge.SelectedIndex);
+                sb.Insert(sb.ToString().IndexOf("WHERE ") + 6, cartridgestatus + " AND ");
+            }
+
+            if (Box.SelectedIndex > 0)
+            {
+                string boxstatus = Global.AdvancedBooleanQueryBuilder("Box", Box.SelectedIndex);
+                sb.Insert(sb.ToString().IndexOf("WHERE ") + 6, boxstatus + " AND ");
+            }
+
+            if (Manual.SelectedIndex > 0)
+            {
+                string manualstatus = Global.AdvancedBooleanQueryBuilder("Manual", Manual.SelectedIndex);
+                sb.Insert(sb.ToString().IndexOf("WHERE ") + 6, manualstatus + " AND ");
+            }
+
+            if (Guide.SelectedIndex > 0)
+            {
+                string guidestatus = Global.AdvancedBooleanQueryBuilder("Guide", Guide.SelectedIndex);
+                sb.Insert(sb.ToString().IndexOf("WHERE ") + 6, guidestatus + " AND ");
+            }
+
+            if (NewInBox.SelectedIndex > 0)
+            {
+                string newinboxstatus = Global.AdvancedBooleanQueryBuilder("NewInBox", Box.SelectedIndex);
+                sb.Insert(sb.ToString().IndexOf("WHERE ") + 6, newinboxstatus + " AND ");
+            }
+
+
+
+
+            return sb.ToString();
+        }
+        
     }
 }

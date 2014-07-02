@@ -28,23 +28,54 @@ namespace GameInventory
         {
             string[] searchterms = search.Split(' ');
             string query = "SELECT * FROM Games ";
-            foreach (string x in searchterms)
+
+            if (searchterms.Length > 1)
             {
-                if (x.Equals(searchterms.First()))
+                foreach (string x in searchterms)
                 {
-                    query = query + "WHERE Name LIKE '%" + x + "%' AND ";
-                }
-                if (x.Equals(searchterms.Last()))
-                {
-                    query = query + "Name LIKE '%" + x + "%' ";
-                }
-                else
-                {
-                    query = query + "Name LIKE '%" + x + "%' AND ";
+                    if (x.Equals(searchterms.First()))
+                    {
+                        query = query + "WHERE Name LIKE '%" + x + "%' AND ";
+                    }
+                    if (x.Equals(searchterms.Last()))
+                    {
+                        query = query + "Name LIKE '%" + x + "%' ";
+                    }
+                    else
+                    {
+                        query = query + "Name LIKE '%" + x + "%' AND ";
+                    }
                 }
             }
-            query = query + "ORDER BY CASE WHEN Name LIKE '" + search + "%' THEN 0 ELSE 1 END ASC, Name ASC";
+
+            else
+            {
+                query = query + "WHERE Name LIKE '%" + search + "%' ";
+            }
+           // query = query + "ORDER BY CASE WHEN Name LIKE '" + search + "%' THEN 0 ELSE 1 END ASC, Name ASC";
             return query;  
+        }
+
+        public static string AdvancedQueryBuilder(string columntitle, string columndata)
+        {
+            string advancedquery = columntitle + " = '" + columndata + "'";
+            return advancedquery;
+        }
+
+        public static string AdvancedBooleanQueryBuilder(string columntitle, int selection)
+        {
+            string advancedbooleanquery = "";
+            if (selection == 1)
+            {
+                advancedbooleanquery = columntitle + " = 'True'";
+            }
+
+            if (selection == 2)
+            {
+                advancedbooleanquery = columntitle + " = 'False'";
+            }
+
+            return advancedbooleanquery;
         }
 
         public static DataTable Search(string query)

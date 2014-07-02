@@ -24,21 +24,39 @@
             <CheckBox x:Name="AdvancedSearch" Content="Advanced Search" Grid.Column="1" HorizontalAlignment="Left" Margin="432,13,0,0" VerticalAlignment="Top"/>
             <GroupBox x:Name="Advanced" Grid.Column="1" Header="Advanced" HorizontalAlignment="Left" Margin="0,39,0,0" VerticalAlignment="Top" Height="165" Width="851" IsEnabled="{Binding ElementName=AdvancedSearch,Path=IsChecked}">
                 <Grid HorizontalAlignment="Left" Margin="10,10,-2,0" VerticalAlignment="Top" Height="125" Width="831">
-                    <ComboBox Name="Owned" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
+                    <ComboBox Name="Owned" HorizontalAlignment="Left" Margin="159,10,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
                         <ComboBoxItem Content="Any ownership"></ComboBoxItem>
                         <ComboBoxItem Content="Owned"></ComboBoxItem>
                         <ComboBoxItem Content="Not owned"></ComboBoxItem>
                     </ComboBox>
-                    <ComboBox Name="Cartridge" HorizontalAlignment="Left" Margin="135,10,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
+                    <ComboBox Name="Cartridge" HorizontalAlignment="Left" Margin="159,37,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
                         <ComboBoxItem Content="Any cartridge"></ComboBoxItem>
                         <ComboBoxItem Content="Cartridge"></ComboBoxItem>
                         <ComboBoxItem Content="No cartridge"></ComboBoxItem>
                     </ComboBox>
-                    <ComboBox Name="Box" HorizontalAlignment="Left" Margin="260,10,0,0" VerticalAlignment="Top" Width="120">
+                    <ComboBox Name="Box" HorizontalAlignment="Left" Margin="284,10,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
                         <ComboBoxItem Content="Any box"></ComboBoxItem>
                         <ComboBoxItem Content="Box"></ComboBoxItem>
                         <ComboBoxItem Content="No box"></ComboBoxItem>
                     </ComboBox>
+                    <ComboBox Name="Platform" Text="Platform" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="144" SelectedIndex="0"/>
+                    <ComboBox Name="Language" Text="platform" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0"/>
+                    <ComboBox Name="Manual" HorizontalAlignment="Left" Margin="284,37,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
+                        <ComboBoxItem Content="Any manual"></ComboBoxItem>
+                        <ComboBoxItem Content="Manual"></ComboBoxItem>
+                        <ComboBoxItem Content="No manual"></ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox Name="Guide" HorizontalAlignment="Left" Margin="409,10,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
+                        <ComboBoxItem Content="Any guide"></ComboBoxItem>
+                        <ComboBoxItem Content="Guide"></ComboBoxItem>
+                        <ComboBoxItem Content="No guide"></ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox Name="NewInBox" HorizontalAlignment="Left" Margin="409,37,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
+                        <ComboBoxItem Content="Any condition"></ComboBoxItem>
+                        <ComboBoxItem Content="New in box"></ComboBoxItem>
+                        <ComboBoxItem Content="Not new in box"></ComboBoxItem>
+                    </ComboBox>
+
                 </Grid>
 
             </GroupBox>
